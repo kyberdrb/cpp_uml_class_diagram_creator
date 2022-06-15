@@ -27,7 +27,9 @@ sed --in-place 's/explicit//g' "${PREPROCESSED_FILE}"
 sed --in-place 's/friend//g' "${PREPROCESSED_FILE}"
 sed --in-place 's/override//g' "${PREPROCESSED_FILE}"
 sed --in-place 's/;//g' "${PREPROCESSED_FILE}"
+
 sed --in-place 's/virtual/\{abstract\}/g' "${PREPROCESSED_FILE}"
+sed --in-place 's/\s*=\s*0.*$//g' "${PREPROCESSED_FILE}"
 
 sed --in-place 's/\*//g' "${PREPROCESSED_FILE}"
 sed --in-place 's/&//g' "${PREPROCESSED_FILE}"
@@ -49,4 +51,10 @@ sed --in-place '/^\s*$/d' "${PREPROCESSED_FILE}"
 
 
 cat "${PREPROCESSED_FILE}" | xclip -selection clipboard
+
+printf "%s\n" "Output file had been written to"
+printf "\n"
+printf "%s\n" "${PREPROCESSED_FILE}"
+printf "\n"
+printf "%s\n" "and its contents had been copied to clipboard."
 

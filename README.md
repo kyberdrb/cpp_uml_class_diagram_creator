@@ -2,6 +2,15 @@
 
 Utility to convert a C++ class header to (somewhat syntantically correct) PlantUML class entity syntax
 
+
+## Usage
+
+Execute the programm with provided C++ header or source file
+
+        ./preprocess_cpp_header_for_plantuml.sh /home/laptop/git/kyberdrb/clean_pacman_cache_dir/LocallyInstalledPackage.h
+
+The output file is printed on the screen an its content copied to the clipboard for further processing in PlantUML class diagram.
+
 ## Specification
 
 - https://duckduckgo.com/?q=c%2B%2B+ascii+uml&ia=web
