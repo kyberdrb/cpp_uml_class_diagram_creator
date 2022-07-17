@@ -8,8 +8,12 @@ Utility to convert a C++ class header to (somewhat syntantically correct) PlantU
 Execute the programm with provided C++ header or source file
 
         ./preprocess_cpp_header_for_plantuml.sh /home/laptop/git/kyberdrb/clean_pacman_cache_dir/LocallyInstalledPackage.h
+        ./preprocess_cpp_source_for_plantuml.sh /home/laptop/git/kyberdrb/clean_pacman_cache_dir/LocallyInstalledPackage.cpp
 
 The output file is printed on the screen an its content copied to the clipboard for further processing in PlantUML class diagram.
+
+The preprocessed header file makes mainly the `class` structure.  
+The preprocessed source file shows the remaining relationships with other classes.
 
 ## Specification
 
@@ -127,4 +131,12 @@ The output file is printed on the screen an its content copied to the clipboard 
 - https://www.unix.com/shell-programming-and-scripting/144664-using-sed-i-want-replace-space-newline.html
 - https://duckduckgo.com/?t=ffab&q=sed+match+parentheses&ia=web
 - https://stackoverflow.com/questions/24136296/matching-pattern-containing-parentheses-with-sed
+- https://duckduckgo.com/?t=ffab&q=tr+in+place&ia=web&iax=qa
+- https://unix.stackexchange.com/questions/536655/is-there-any-way-to-use-the-tr-command-in-place#536656
+- https://duckduckgo.com/?t=ffab&q=cat+write+to+same+file&ia=web
+- https://duckduckgo.com/?t=ffab&q=tee+hide+output&ia=web
+- https://unix.stackexchange.com/questions/436520/hide-output-of-command-while-using-cat-and-tee
+- https://duckduckgo.com/?t=ffab&q=sed+replace+in+lines+not+containing&ia=web
+- https://www.golinuxhub.com/2017/09/sed-perform-search-and-replace-only-on/
+
 

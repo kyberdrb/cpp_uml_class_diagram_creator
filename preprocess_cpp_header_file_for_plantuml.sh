@@ -20,16 +20,23 @@ sed --in-place '/^\s*\/\/.*/d' "${PREPROCESSED_FILE}"
 sed --in-place '/^\s*#include </d' "${PREPROCESSED_FILE}"
 sed --in-place '/^\s*#pragma/d' "${PREPROCESSED_FILE}"
 
-
-sed --in-place 's/const//g' "${PREPROCESSED_FILE}"
-sed --in-place 's/volatile//g' "${PREPROCESSED_FILE}"
-sed --in-place 's/explicit//g' "${PREPROCESSED_FILE}"
-sed --in-place 's/friend//g' "${PREPROCESSED_FILE}"
-sed --in-place 's/override//g' "${PREPROCESSED_FILE}"
-sed --in-place 's/;//g' "${PREPROCESSED_FILE}"
+sed --in-place 's/const\s*//g' "${PREPROCESSED_FILE}"
+sed --in-place 's/volatile\s*//g' "${PREPROCESSED_FILE}"
+sed --in-place 's/explicit\s*//g' "${PREPROCESSED_FILE}"
+sed --in-place 's/friend\s*//g' "${PREPROCESSED_FILE}"
+sed --in-place 's/override\s*//g' "${PREPROCESSED_FILE}"
+sed --in-place 's/;\s*//g' "${PREPROCESSED_FILE}"
 
 sed --in-place 's/virtual/\{abstract\}/g' "${PREPROCESSED_FILE}"
 sed --in-place 's/\s*=\s*0.*$//g' "${PREPROCESSED_FILE}"
+
+sed --in-place "s/(\s*/(/g" "${PREPROCESSED_FILE}"
+sed --in-place "s/\s*)/)/g" "${PREPROCESSED_FILE}"
+
+sed --in-place "s/\s*{.*/{/g" "${PREPROCESSED_FILE}"
+sed --in-place 's/{/\n/g' "${PREPROCESSED_FILE}"
+
+sed --in-place "/^class/s/$/ {/g" "${PREPROCESSED_FILE}"
 
 sed --in-place 's/\*//g' "${PREPROCESSED_FILE}"
 sed --in-place 's/&//g' "${PREPROCESSED_FILE}"
@@ -40,15 +47,16 @@ sed --in-place 's/std::ref<//g' "${PREPROCESSED_FILE}"
 
 sed --in-place 's/>\s*/ /g' "${PREPROCESSED_FILE}"
 
-sed --in-place "s/(\s*/(/g" "${PREPROCESSED_FILE}"
-sed --in-place "s/\s*)/)/g" "${PREPROCESSED_FILE}"
-
 sed --in-place 's/std:://g' "${PREPROCESSED_FILE}"
 
-sed --in-place 's/^\s*//g' "${PREPROCESSED_FILE}"
-sed --in-place 's/\s\s*/ /g' "${PREPROCESSED_FILE}"
 sed --in-place '/^\s*$/d' "${PREPROCESSED_FILE}"
 
+sed --in-place "s/}.*$/}/g" "${PREPROCESSED_FILE}"
+sed --in-place 's/}//g' "${PREPROCESSED_FILE}"
+
+cat --squeeze-blank "${PREPROCESSED_FILE}" | tee "${PREPROCESSED_FILE}"
+
+echo "}" >> "${PREPROCESSED_FILE}"
 
 cat "${PREPROCESSED_FILE}" | xclip -selection clipboard
 
